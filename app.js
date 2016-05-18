@@ -26,8 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
-app.listen(app.get('port'));
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -35,12 +33,8 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
+    app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -48,9 +42,6 @@ if (app.get('env') === 'development') {
     });
   });
 }
-
-// production error handler
-// no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
@@ -58,6 +49,17 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+// production error handler
+// no stacktraces leaked to user
+
+
+// error handlers
+
+// development error handler
+// will print stacktrace
+app.set('port', process.env.PORT || 3000);
+app.listen(app.get('port'));
+
 
 // export app project
 module.exports = app;
