@@ -10,8 +10,6 @@ var users = require('./routes/users');
 // instantiate express
 var app = express();
 
-var port = process .env.PORT || 8080;
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -59,16 +57,6 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-
-
-
-
-
-app.listen(port, function(){
-    console.log("app is running on" + port);
-});
-
 
 // export app project
 module.exports = app;

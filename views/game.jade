@@ -1,0 +1,13 @@
+//
+   Created by Pradyumn on 23/05/2016.
+extends layout
+block content
+    .gameContainer
+        #sidebar.sidebar
+            canvas#previewCanvas.previewCanvas Your browser doesn't support canvas!
+            p.scoreText Millions of Dollars Hidden:
+            p#score.navText 0
+            p#startBanner.navText  Press ENTER to begin.
+        canvas#canvas.gameCanvas Your browser doesn't support canvas!
+block script
+    script(src='javascripts/tetris.js')

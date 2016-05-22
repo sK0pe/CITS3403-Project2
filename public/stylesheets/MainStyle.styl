@@ -1,0 +1,230 @@
+@font-face
+  font-family Roboto
+  src url("fonts/Roboto-Regular.ttf")
+
+@font-face
+  font-family Roboto
+  font-weight 900
+  src url("fonts/Roboto-Black.ttf")
+
+@font-face
+  font-family Roboto
+  font-weight 700
+  src url("fonts/Roboto-Bold.ttf")
+
+@font-face
+  font-family Roboto
+  font-weight 500
+  src url("fonts/Roboto-Medium.ttf")
+
+@font-face
+  font-family Roboto
+  font-style italic
+  src url("fonts/Roboto-MediumItalic.ttf")
+
+.titleText, .navText, .regText, .scoreText, h1, a
+  color rgba(255, 255, 255, 1)
+  font-family "Roboto", sans-serif
+  text-decoration none
+
+.titleText
+  font-size 4vh
+  font-weight 900
+
+.navText, h1
+  font-size 3vh
+  font-weight 700
+  text-align center
+
+h2
+  font-size 2.5vh
+  font-weight 700
+  text-align left
+
+.scoreText
+  font-size 2vh
+  font-weight 700
+  text-align center
+
+.textBox a, .scoreText
+  color rgb(38, 234, 34)
+
+.regText
+  font-size 2vh
+  font-weight 500
+  text-align left
+
+li a:hover, .textBox a:hover
+  color rgba(0, 255, 255, 1)
+  background-color rgba(0, 0, 0, 0.4)
+
+.pageHeader, .pageFooter, .textBox
+  background-color rgba(0,0,0,0.7)
+
+.pageHeader, .gameArea, .pageFooter, .overallWrap
+  width 100vw
+
+body
+  margin 0
+  background url("../images/cash.jpg") no-repeat center fixed
+  background-size cover
+  overflow-x hidden
+  &.maskBody
+    overflow hidden
+
+.pageHeader
+  height 8vh
+  .pageNavigation
+    height inherit
+    padding-right 2vw
+  .navList
+    height inherit
+    list-style none
+    margin 0
+    padding-right 2vw
+    overflow hidden
+    -webkit-padding-start 0
+  li
+    height inherit
+    float right
+    a
+      padding 2.2vh 2vw
+      display block
+      transition 0.5s
+      cursor auto
+
+#gameTitle
+  padding-left 3vw
+  padding-top 1.5vh
+  padding-bottom 1.5vh
+  float left
+  transition 0.4s
+
+a#menuButton
+  padding 1.3vh 2vw
+
+@media screen and (max-width: 890px)
+  ul
+    &.navList
+      li
+        display none
+        &.burgerIcon
+          display block
+          a
+            padding-top 1.3vh
+            padding-bottom 1.3vh
+  div
+    &.titleText
+      font-size 4vw
+      transition font-size 0.2s
+
+.pushMenu
+  position fixed
+  background-color rgba(60, 60, 60, 1)
+  z-index 2
+  height 92vh
+  top 8vh
+  width 30vw
+  right -30vw
+  margin 0
+  padding-left 0
+  overflow-y auto
+  overflow-x hidden
+  transition all 0.4s ease
+  li
+    list-style none
+    a
+      display block
+      text-align center
+      padding 2vh 0
+      transition all 0.4s
+
+.overallWrap
+  text-align right
+  transition all 0.4s ease
+  position relative
+  overflow-x hidden
+  left 0
+
+.mask
+  position fixed
+  z-index 1
+  top 8vh
+  left 0
+  width 0
+  height 0
+  overflow hidden
+  background-color rgb(0,0,0)
+  opacity 0
+  transition opacity 0.4s ease-in
+
+.gameArea
+  text-align center
+  min-height 82vh
+  position relative
+  padding-top 2vh
+  padding-bottom 2vh
+
+.gameContainer
+  padding 4vh 4vw
+  width 72vw
+  margin-left 9vw
+  background-color rgba(0,0,0, 0.7)
+  display block
+
+.sidebar
+  width 20vw
+  margin 0
+  display inline-block
+  vertical-align top
+  position relative
+  padding-top 4vh
+
+.previewCanvas
+  height 20vh
+  width 20vh
+  background-color rgba(60,60,60,1)
+
+.gameCanvas
+  height 80vh
+  width 40vh
+  background rgba(60,60,60,1)
+  display inline-block
+  vertical-align top
+  margin-left 4vw
+
+.textBox
+  background-color rgba(0,0,0, 0.7)
+  width 72vw
+  padding 4vh 4vw
+  margin-left 10vw
+  li
+    margin-top 2vh
+    margin-bottom 2vh
+
+.reflist
+  list-style none
+  word-wrap break-word
+
+.pageFooter
+  min-height 10vh
+  position relative
+
+.pageFooterList
+  list-style none
+  margin 0
+  li
+    padding 2.5vh 2vw
+    height 5vh
+
+menu
+  &.openMenu
+    right 0
+
+section
+  &.pushWrap
+    left -30vw
+  &.showMask
+    width 100vw
+    height 92vh
+    opacity 0.7

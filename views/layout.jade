@@ -1,7 +1,39 @@
 doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        title Stash EvilCorp's Cash - Intro
+        link(rel='stylesheet', type='text/css', href='stylesheets/mainStyle.css')
+        script(src='javascripts/mainScript.js')
+    body
+        header#pageHeader.pageHeader
+            #gameTitle
+                a.titleText(href='/game') Fill EvilCorp's Pocket
+            nav#pageNavigation.pageNavigation.navText
+                ul#navList.navList
+                    li#burgerIcon.burgerIcon
+                        a#menuButton.menuButton.titleText(href='#') ☰
+                    li
+                        a.navText(href='/rules') Rules
+                    li
+                        a.navText(href='/background') Intro
+        // Primary section of website, wrapped to allow for menu Operation
+        section#overallWrap.overallWrap
+            // Area for Canvas to be placed
+            section#gameArea.gameArea
+                block content
+            footer#pageFooter.pageFooter
+                ul#socialMedia.pageFooterList
+        // Right Pushing Menu
+        menu#pushMenu.pushMenu
+            li
+                a.navText(href='/game') Play the Game!
+            li
+                a.navText(href='/rules') Rules and Scoring
+            li
+                a.navText(href='/background') Introduction and Background
+            li
+                a.navText(href='/references') References
+        // Mask for background when menu pushes
+        section#mask.mask
+        block script
