@@ -2,6 +2,10 @@
  * Created by Pradyumn on 25/05/2016.
  */
 
+module.exports.index = function(req, res){
+  res.render('index', {title: "Stash EvilCorp's Cash"});  
+};
+
 module.exports.background = function(req, res){
     res.render('background', {title: "Stash EvilCorp's Cash - Background"});
 };
@@ -16,10 +20,6 @@ module.exports.rules = function(req, res){
 
 module.exports.game = function(req, res){
     res.render('game', {title: "Stash EvilCorp's Cash - Stashing Cash"});
-};
-
-module.exports.login = function(req, res){
-    res.render('login', {title: "Stash EvilCorp's Cash - Employee of the Minute"});
 };
 
 module.exports.error = function(req, res){

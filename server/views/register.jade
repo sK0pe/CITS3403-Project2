@@ -1,0 +1,18 @@
+//
+   Created by Pradyumn on 27/05/2016.
+extends layout
+block content
+    section#register.textBox.regText
+        h1 Register
+        p Time to climb the corporate ladder using white collar crime!
+        br
+        form(role='form', action='/register', method='post')
+            div
+                input(type='text', name='username', placeholder='Employee Name')
+            div
+                input(type='password', name='password', placeholder='password')
+            div
+                button(type='submit' value='Log in') Register
+                &nbsp;&nbsp;&nbsp;
+                a(href='/')
+                    button(type='button') Cancel
