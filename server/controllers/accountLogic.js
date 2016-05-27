@@ -20,17 +20,22 @@ module.exports.register = function(req, res){
     res.render('register', {title: "Register to Stash EvilCorp's Cash"});
 };
 
-module.exports.registration = function(req, res){
+module.exports.registration = function(req, res, next){
     account.register(new account({username: req.body.username}),
         req.body.password,
         function(err, account){
             if(err){
-                return res.render('register', {account: account});
+                return res.render('register', {error : err.message});
             }
             passport.authenticate('local')(req, res, function(){
-                res.redirect('/');
+                res.session.save(function(err){
+                    if(err){
+                        return next(err);
+                    }
+                    res.redirect('/');
+                });
             });
-        });
+    });
 };
 
 //  Logout
