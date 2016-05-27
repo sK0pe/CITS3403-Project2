@@ -13,7 +13,7 @@ router.get('/index', controlGetPage.index);
 
 //  Register
 router.get('/register', controlAccount.register);
-router.post('/register', controlAccount.registration);
+router.post('/register', controlAccount.newPlayer);
 //  Login
 router.get('/login', controlAccount.login);
 router.post('/login', controlAccount.authenticate);
