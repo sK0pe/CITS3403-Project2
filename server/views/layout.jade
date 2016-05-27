@@ -7,10 +7,6 @@ html(lang='en')
         link(rel='stylesheet', type='text/css', href='stylesheets/mainStyle.css')
         script(src='javascripts/mainScript.js')
     body
-        if (error && error.length > 0)
-            br
-            h4.error-msg= error
-            br
         header#pageHeader.pageHeader
             #gameTitle
                 a.titleText(href='/game') Fill EvilCorp's Pocket

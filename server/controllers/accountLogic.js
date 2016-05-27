@@ -14,6 +14,23 @@ module.exports.authenticate = (passport.authenticate('local'), function(req, res
     res.redirect('/');
 });
 
+module.exports.authenticate = function(req, res, next){
+    passport.authenticate('local', function(err, user, info){
+        if(err){
+            return next(err); // 500 error
+        }
+        if(!user){
+            return res.send(401, {success : false, message: 'authentication failed'});
+        }
+        req.login(user, function(err){
+            if(err){
+                return next(err);
+            }
+            return res.send({ success : true, message : 'authentication succeeded'});
+        });
+    })(req, res, next);
+};
+
 
 //  Register
 module.exports.register = function(req, res){
@@ -25,10 +42,11 @@ module.exports.registration = function(req, res, next){
         req.body.password,
         function(err, account){
             if(err){
-                return res.render('register', {error : err.message});
+                return res.status(500).json({err:err});
+                //return res.render('register', {error : err.message});
             }
             passport.authenticate('local')(req, res, function(){
-                res.session.save(function(err){
+                req.session.save(function(err){
                     if(err){
                         return next(err);
                     }
