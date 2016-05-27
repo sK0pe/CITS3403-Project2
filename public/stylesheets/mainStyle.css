@@ -23,23 +23,6 @@ h2 {
   font-weight: 700;
   text-align: left;
 }
-.indexText {
-  font-size: 2.5vh;
-  font-weight: 700;
-  text-align: center;
-  color: #000;
-}
-.indexOption {
-  padding-left: 0;
-}
-.indexOption li {
-  vertical-align: middle;
-  list-style: none;
-  height: 8.5vh;
-}
-.indexOption li a {
-  padding: 4vh 4vh;
-}
 .scoreText {
   font-size: 2vh;
   font-weight: 700;
@@ -92,7 +75,7 @@ body.maskBody {
   margin: 0;
   padding-right: 2vw;
   overflow: hidden;
-  padding-left: 0;
+  -webkit-padding-start: 0;
 }
 .pageHeader li {
   height: inherit;
@@ -185,6 +168,12 @@ a#menuButton {
   margin-left: 9vw;
   background-color: rgba(0,0,0,0.7);
   display: block;
+}
+.commentsContainer {
+  padding: 4vh 4vw;
+  width: 140vw;
+  display: block;
+  background-color: rgba(0,0,0,0.7);
 }
 .sidebar {
   width: 20vw;
