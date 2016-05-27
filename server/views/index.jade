@@ -1,5 +1,15 @@
-extends layout
+//
+   Created by Pradyumn on 27/05/2016.
 
+extends layout
 block content
-    h1= title
-    p Welcome to #{title}
+    section#index.textBox.indexText
+        if(!user)
+            ul.indexOption
+                li
+                    a(href='/login') Login if you're already an Employee
+                li
+                    a(href='/register') Register if you want to enter the Corporate World
+                        if(user)
+                            p You are currently logged in as #{user.username}
+                            a(href='/logout') Logout

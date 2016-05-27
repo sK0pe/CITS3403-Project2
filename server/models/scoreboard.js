@@ -36,4 +36,4 @@ var scoreSchema = new mongoose.Schema({
     }
 });
 
-mongoose.model('scoreboard', scoreSchema);
+module.exports = mongoose.model('scoreboard', scoreSchema);

@@ -1,35 +1,24 @@
 var express = require('express');
 var router = express.Router();
+var controlGetPage = require('../controllers/routeLogic');
+var controlAccount = require('../controllers/accountLogic');
 
-/* GET home page. */
-router.get('/', function(req, res) {
-  res.render('background', { 
-      title: "Stash EvilCorp's Cash"
-  });
-});
+//  Get Pages / Views
+router.get('/', controlGetPage.background);
+router.get('/background', controlGetPage.background);
+router.get('/references', controlGetPage.references);
+router.get('/rules', controlGetPage.rules);
+router.get('/game', controlGetPage.game);
+router.get('/index', controlGetPage.index);
 
-router.get('/background', function(req, res){
-    res.render('background', {
-        title: "Stash EvilCorp's Cash - Background"        
-    });
-});
+//  Register
+router.get('/register', controlAccount.register);
+router.post('/register', controlAccount.registration);
+//  Login
+router.get('/login', controlAccount.login);
+router.post('/login', controlAccount.authenticate);
+//  Logout
+router.get('/logout', controlAccount.logout);
 
-router.get('/references', function(req, res){
-    res.render('references', {
-        title: "Stash EvilCorp's Cash - References"
-    });
-});
-
-router.get('/rules', function(req, res){
-    res.render('rules', {
-        title: "Stash EvilCorp's Cash - Controls and Scoring"
-    });
-});
-
-router.get('/game', function(req, res){
-    res.render('game', {
-        title: "Stash EvilCorp's Cash - Stashing Cash"
-    });
-});
 
 module.exports = router;
