@@ -10,6 +10,7 @@ router.get('/references', controlGetPage.references);
 router.get('/rules', controlGetPage.rules);
 router.get('/game', controlGetPage.game);
 router.get('/index', controlGetPage.index);
+router.get('/comments', controlGetPage.comments);
 
 //  Register
 router.get('/register', controlAccount.register);

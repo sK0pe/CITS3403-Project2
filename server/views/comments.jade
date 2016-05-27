@@ -1,7 +1,13 @@
 
 extends layout
 block content
-    .commentsContainer
-        
-block script
-    script(src='javascripts/comments.js')
+    block content
+        form(method="post" action="/create")
+            label(for="comment") Comment:
+            input(type="text", name="comment", value=comment)
+            input(type="submit", value="save")
+        br
+        h2
+            Comments
+        for comment in comments
+            p= comment.comment

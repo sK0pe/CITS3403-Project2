@@ -22,6 +22,10 @@ module.exports.game = function(req, res){
     res.render('game', {title: "Stash EvilCorp's Cash - Stashing Cash"});
 };
 
+module.exports.comments = function(req, res){
+	res.render('comments', {title: "Stash EvilCorp's Cash - Comments"});
+}
+
 module.exports.error = function(req, res){
     res.render('error', {title: "Stash EvilCorp's Cash - Can't Stash Here!"});
 };

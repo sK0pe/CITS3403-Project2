@@ -35,4 +35,5 @@ process.on('SIGINT', function(){
 
 // Import database schemas and models
 require('./scoreboard');
+require('./login');
 

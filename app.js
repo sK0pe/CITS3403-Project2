@@ -44,6 +44,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 //app.use('/users', users);
 
+//Comments
+app.use('/comments', comments);
+app.use('/create', comments);
+// require('./server/models/login')
+
 //  Configure Passport
 var Account = require('./server/models/account');
 passport.use(new localStrategy(Account.authenticate()));

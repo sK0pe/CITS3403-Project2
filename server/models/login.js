@@ -15,7 +15,8 @@ var userSchema = new mongoose.Schema({
 var commentSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: true
+        required: true,
+        "default": "admin"
     }.
     comment: {
         type: String,
@@ -30,3 +31,5 @@ var commentSchema = new mongoose.Schema({
 
 mongoose.model('user', userSchema);
 mongoose.model('comment', commentSchema);
+
+// mongoose.connect('mongodb://localhost/comments');

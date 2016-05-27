@@ -169,12 +169,6 @@ a#menuButton {
   background-color: rgba(0,0,0,0.7);
   display: block;
 }
-.commentsContainer {
-  padding: 4vh 4vw;
-  width: 140vw;
-  display: block;
-  background-color: rgba(0,0,0,0.7);
-}
 .sidebar {
   width: 20vw;
   margin: 0;
