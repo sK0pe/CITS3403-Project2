@@ -6,11 +6,12 @@ var Schema = mongoose.Schema;
 // Salting and hashing done by this package
 var passportLocalMongoose = require('passport-local-mongoose');
 
-var Account = new Schema({
+var AccountSchema = new Schema({
     username: String,
-    password: String
+    password: String,
+    highscore: Number
 });
 
-Account.plugin(passportLocalMongoose);
+AccountSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model('Account', Account);
+module.exports = mongoose.model('Account', AccountSchema);

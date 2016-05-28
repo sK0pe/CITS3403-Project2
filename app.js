@@ -1,12 +1,12 @@
 var express = require('express');
-var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var stylus = require('stylus');
+var session = require('express-session');
 
 //  Database
-var mongoose = require('mongoose');
 require('./server/models/db');
 
 // Authentication / Passport
@@ -20,7 +20,7 @@ var routes = require('./server/routes/index');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'server', 'views'));
+app.set('views', './server/views');
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
@@ -29,16 +29,16 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(require('stylus').middleware(path.join(__dirname, 'public')));
-app.use(require("express-session")({
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(stylus.middleware('./public'));
+app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('./public'));
 
 
 app.use('/', routes);
