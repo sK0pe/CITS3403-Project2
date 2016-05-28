@@ -10,11 +10,12 @@ var session = require('express-session');
 require('./server/models/db');
 
 // Authentication / Passport
-var passport = require('passport');
-var localStrategy = require('passport-local').Strategy;
+var passport = require('./config/passport');
+
+//var localStrategy = require('passport-local').Strategy;
 
 var routes = require('./server/routes/index');
-//var users = require('./server/routes/users');
+//var accounts = require('./server/routes/accountRoutes');
 
 // instantiate express
 var app = express();
@@ -40,15 +41,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static('./public'));
 
-
+// Routes
 app.use('/', routes);
-//app.use('/users', users);
+require('./server/routes/accountRoutes')(app);
+//app.use('/accounts', accounts);
 
 //  Configure Passport
-var Account = require('./server/models/account');
+/*var Account = require('./server/models/account');
 passport.use(new localStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
+passport.deserializeUser(Account.deserializeUser());*/
+passport = passport();
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

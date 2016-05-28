@@ -14,7 +14,7 @@
     /*----------------------------------------------Game Variables*/
     var blockSize,      // pixel length or width of a block
         blockField,     // 2d array representing empty or full
-        playerInputs,   // User input queue
+        playerInputs,   // Account input queue
         playing,        // bool to see if playing
         elapsedTime,    // keeps track of changes in time
         currBlock,      // current block
@@ -240,7 +240,7 @@
         }
     }
 
-    /*Execute User key presses*/
+    /*Execute Account key presses*/
     function executeInput(input){
         switch(input){
             case directionArray.LEFT:

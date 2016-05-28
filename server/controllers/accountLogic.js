@@ -4,12 +4,88 @@
 var account = require('../models/account');
 var passport = require('passport');
 
-//  Login
-module.exports.login = function(req, res){
-    res.render('login', {title: "Stash EvilCorp's Cash - Employee of the Minute"});
+
+
+var Account = require('mongoose').model('Account');
+//  Create
+module.exports.create = function(req, res, next) {
+    var user = new Account(req.body);
+    user.save(function(err) {
+        if (err) {
+            return next(err);
+        }
+        else {
+            res.json(user);
+        }
+    });
+};
+
+//  Find all users
+module.exports.list = function(req, res, next) {
+    //  No specified request will receive all accounts
+    Account.find({}, function(err, users) {
+        if (err) {
+            return next(err);
+        }
+        else {
+            res.json(users);
+        }
+    });
+};
+
+//  Responds with json version of req.account
+module.exports.read = function(req, res) {
+    res.json(req.account);
+};
+
+//  Find one user
+module.exports.userByID = function(req, res, next, id) {
+    Account.findOne({
+            _id: id
+        },
+        function(err, account) {
+            if (err) {
+                return next(err);
+            }
+            else {
+                req.account = account;
+                next();
+            }
+        }
+    );
+};
+
+//  Update
+module.exports.update = function(req, res, next) {
+    Account.findByIdAndUpdate(req.account.id, req.body, function(err, account) {
+        if (err) {
+            return next(err);
+        }
+        else {
+            res.json(account);
+        }
+    });
 };
 
 
+//  Delete Account
+module.exports.delete = function(req, res, next) {
+    req.account.remove(function(err) {
+        if (err) {
+            return next(err);
+        }
+        else {
+            res.json(req.account);
+        }
+    })
+};
+
+
+
+
+
+
+//  Login
 module.exports.authenticate = function(req, res, next){
     passport.authenticate('local', function(err, user, info){
         if(err){
@@ -33,10 +109,6 @@ module.exports.authenticate = function(req, res, next){
 
 
 //  Register
-module.exports.register = function(req, res){
-    res.render('register', {title: "Register to Stash EvilCorp's Cash"});
-};
-
 module.exports.newPlayer = function(req, res, next){
     account.register(new account({username: req.body.username}),
         req.body.password,
