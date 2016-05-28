@@ -45,9 +45,10 @@ app.use('/', routes);
 //app.use('/users', users);
 
 //Comments
+var comments = require('./server/models/login')
 app.use('/comments', comments);
 app.use('/create', comments);
-// require('./server/models/login')
+
 
 //  Configure Passport
 var Account = require('./server/models/account');

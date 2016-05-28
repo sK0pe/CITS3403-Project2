@@ -2,12 +2,19 @@
 extends layout
 block content
     block content
-        form(method="post" action="/create")
-            label(for="comment") Comment:
-            input(type="text", name="comment", value=comment)
-            input(type="submit", value="save")
-        br
+        section#login.textBox.regText
+            form(method="post" action="/create")
+                div
+                    label(for="comment") Comment:
+                    input(type="text", name="comment", value=comment)
+                div
+                    input(type="submit", value="save")
+            br
+
         h2
             Comments
-        for comment in comments
-            p= comment.comment
+        p#CommentsContainer
+            each comment in comments
+                p#CommentHolder
+                    p #{comment.username} : #{comment.comment}
+                    br

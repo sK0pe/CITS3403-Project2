@@ -17,7 +17,7 @@ var commentSchema = new mongoose.Schema({
         type: String,
         required: true,
         "default": "admin"
-    }.
+    },
     comment: {
         type: String,
         required: true
