@@ -1,67 +1,67 @@
 var express = require('express');
+var session = require('express-session');
+var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 var stylus = require('stylus');
-var session = require('express-session');
-var flash = require('connect-flash');
-
-//  Database
-require('./server/models/db');
-
-// Authentication / Passport
 var passport = require('passport');
-
-//var localStrategy = require('passport-local').Strategy;
-
-var routes = require('./server/routes/index');
-//var accounts = require('./server/routes/accountRoutes');
-
-// instantiate express
+var LocalStrategy = require('passport-local').Strategy
+//  Model
+var User = require('./models/user');
+//  Routes
+var users = require('./routes/users');
+var routes = require('./routes/index');
+var comments = require('./routes/comments');
+//  Express
 var app = express();
 
 // view engine setup
-app.set('views', './server/views');
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-
 app.use(logger('dev'));
-app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(stylus.middleware('./public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(stylus.middleware(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
-    secret: 'keyboard cat',
+    secret: 'cats are better than dogs',
     resave: true,
     saveUninitialized: true
 }));
-app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static('./public'));
+//  At all views check if user is authenticated / signed in
+app.get('*', function(req, res, next){
+    res.locals.signedIn = req.isAuthenticated() ? true : false;
+    next();
+});
 
-// Routes
+//  Routes loaded after everything is loaded and authentication check
 app.use('/', routes);
-require('./server/routes/accountRoutes')(app);
-//app.use('/accounts', accounts);
+app.use('/user', users);
+app.use('/comments', comments);
 
-//  Configure Passport
-/*var Account = require('./server/models/account');
-passport.use(new localStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());*/
-var passportSetup = require('./config/passport');
-passportSetup = passportSetup();
+//  Passport configuration (default)
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+//  Connection via mongoose to mongod
+mongoose.connect('mongodb://localhost/CashStash', function(err){
+    if(err){
+        console.log('Failed to connect to mongodb on localhost, default port.');
+    }
+    else{
+        console.log('Successfully connected to mongodb');
+    }
 });
 
 // error handlers
@@ -70,23 +70,23 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
     });
-  });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
 });
 
-// export app project
+
 module.exports = app;

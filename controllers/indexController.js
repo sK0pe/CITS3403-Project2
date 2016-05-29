@@ -1,15 +1,3 @@
-/**
- * Created by Pradyumn on 25/05/2016.
- */
-
-module.exports.index = function(req, res){
-  res.render('index', {
-      title: "Stash EvilCorp's Cash",
-      //    Condition if username has logged in or not
-      account: req.account ? req.account.username : ''
-  });
-};
-
 module.exports.background = function(req, res){
     res.render('background', {title: "Stash EvilCorp's Cash - Background"});
 };
@@ -30,11 +18,14 @@ module.exports.error = function(req, res){
     res.render('error', {title: "Stash EvilCorp's Cash - Can't Stash Here!"});
 };
 
-/*module.exports.login = function(req, res){
-    res.render('login', {title: "Stash EvilCorp's Cash - Employee of the Minute"});
+module.exports.bios = function(req, res){
+    res.render('bios', {title: "Stash EvilCorp's Cash - Don't Waste Your Time"});
 };
 
-module.exports.register = function(req, res){
-    res.render('register', {title: "Register to Stash EvilCorp's Cash"});
+module.exports.design = function(req, res){
+    res.render('design', {title: "Stash EvilCorp's Cash - Designed by the Challenged"});
 };
-*/
+
+module.exports.validation = function(req, res){
+    res.render('validation', {title: "Stash EvilCorp's Cash - How not to Validate"});    
+};
