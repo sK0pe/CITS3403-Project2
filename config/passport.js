@@ -5,11 +5,13 @@ var passport = require('passport');
 
 module.exports = function() {
     var Account = require('../server/models/account');
-
+    
+    //  Account is used
     passport.serializeUser(function(user, done) {
         done(null, user.id);
     });
-
+    
+    //  Account is not in use 
     passport.deserializeUser(function(id, done) {
         Account.findOne(
             {_id: id},

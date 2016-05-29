@@ -12,13 +12,13 @@ router.get('/game', controlGetPage.game);
 router.get('/index', controlGetPage.index);
 
 //  Register
-router.get('/register', controlGetPage.register);
-router.post('/register', controlAccount.newPlayer);
+//router.get('/register', controlGetPage.register);
+//router.post('/register', controlAccount.newPlayer);
 //  Login
-router.get('/login', controlGetPage.login);
-router.post('/login', controlAccount.authenticate);
+//router.get('/login', controlGetPage.login);
+//router.post('/login', controlAccount.authenticate);
 //  Logout
-router.get('/logout', controlAccount.logout);
+//router.get('/logout', controlAccount.logout);
 
 
 module.exports = router;

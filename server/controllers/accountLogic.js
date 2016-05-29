@@ -1,12 +1,93 @@
 /**
  * Created by Pradyumn on 26/05/2016.
  */
-var account = require('../models/account');
+//var account = require('../models/account');
+var Account = require('mongoose').model('Account');
 var passport = require('passport');
 
+//  Handle error message
+var getErrorMessage = function(err) {
+    var message = '';
+    if (err.code) {
+        switch (err.code) {
+            case 11000:
+            case 11001:
+                message = 'Username already exists';
+                break;
+            default:
+                message = 'Something went wrong';
+        }
+    }
+    else {
+        for (var e in err.errors) {
+            if (err.errors[e].message)
+                message = err.errors[e].message;
+        }
+    }
+    return message;
+};
+
+//  Login get
+module.exports.renderLogin = function(req, res, next) {
+    if (!req.account) {
+        res.render('login', {
+            title: 'Log-in Form',
+            messages: req.flash('error') || req.flash('info')
+        });
+    }
+    else {
+        return res.redirect('/');
+    }
+};
 
 
-var Account = require('mongoose').model('Account');
+//  Register get
+module.exports.renderRegister = function(req, res, next) {
+    if (!req.account) {
+        res.render('register', {
+            title: 'Register Form',
+            messages: req.flash('error')
+        });
+    }
+    else {
+        return res.redirect('/');
+    }
+};
+
+//  Perform registration
+module.exports.register = function(req, res, next) {
+    if (!req.account) {
+        var account = new Account(req.body);
+        var message = null;
+        account.provider = 'local';
+        account.save(function(err) {
+            if (err) {
+                var message = getErrorMessage(err);
+                req.flash('error', message);
+                return res.redirect('/register');
+            }
+
+            req.login(account, function(err) {
+                if (err){
+                    return next(err);
+                }
+                return res.redirect('/');
+            });
+        });
+    }
+    else {
+        return res.redirect('/');
+    }
+};
+
+//  Logout
+module.exports.logout = function(req, res){
+    req.logout();
+    res.redirect('/');
+};
+
+
+
 //  Create
 module.exports.create = function(req, res, next) {
     var user = new Account(req.body);
@@ -83,7 +164,7 @@ module.exports.delete = function(req, res, next) {
 
 
 
-
+/*
 
 //  Login
 module.exports.authenticate = function(req, res, next){
@@ -136,4 +217,4 @@ module.exports.newPlayer = function(req, res, next){
 module.exports.logout = function(req, res){
     req.logout();
     res.redirect('/');
-};
+};*/

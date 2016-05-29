@@ -3,7 +3,11 @@
  */
 
 module.exports.index = function(req, res){
-  res.render('index', {title: "Stash EvilCorp's Cash"});  
+  res.render('index', {
+      title: "Stash EvilCorp's Cash",
+      //    Condition if username has logged in or not
+      account: req.account ? req.account.username : ''
+  });
 };
 
 module.exports.background = function(req, res){
@@ -26,10 +30,11 @@ module.exports.error = function(req, res){
     res.render('error', {title: "Stash EvilCorp's Cash - Can't Stash Here!"});
 };
 
-module.exports.login = function(req, res){
+/*module.exports.login = function(req, res){
     res.render('login', {title: "Stash EvilCorp's Cash - Employee of the Minute"});
 };
 
 module.exports.register = function(req, res){
     res.render('register', {title: "Register to Stash EvilCorp's Cash"});
 };
+*/

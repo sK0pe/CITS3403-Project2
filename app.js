@@ -5,12 +5,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var stylus = require('stylus');
 var session = require('express-session');
+var flash = require('connect-flash');
 
 //  Database
 require('./server/models/db');
 
 // Authentication / Passport
-var passport = require('./config/passport');
+var passport = require('passport');
 
 //var localStrategy = require('passport-local').Strategy;
 
@@ -34,11 +35,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(stylus.middleware('./public'));
 app.use(session({
     secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false
+    resave: true,
+    saveUninitialized: true
 }));
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(express.static('./public'));
 
 // Routes
@@ -51,7 +54,8 @@ require('./server/routes/accountRoutes')(app);
 passport.use(new localStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());*/
-passport = passport();
+var passportSetup = require('./config/passport');
+passportSetup = passportSetup();
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

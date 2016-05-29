@@ -13,15 +13,12 @@ module.exports = function() {
                 if (err) {
                     return done(err);
                 }
-
                 if (!user) {
                     return done(null, false, {message: 'Unknown Employee'});
                 }
-
                 if (!user.authenticate(password)) {
                     return done(null, false, {message: 'Incorrect Password'});
                 }
-
                 return done(null, user);
             }
         );

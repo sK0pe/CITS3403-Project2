@@ -7,6 +7,7 @@ html(lang='en')
         link(rel='stylesheet', type='text/css', href='stylesheets/mainStyle.css')
         script(src='javascripts/mainScript.js')
     body
+        block errs
         header#pageHeader.pageHeader
             #gameTitle
                 a.titleText(href='/game') Fill EvilCorp's Pocket
@@ -15,7 +16,11 @@ html(lang='en')
                     li#burgerIcon.burgerIcon
                         a#menuButton.menuButton.titleText(href='#') ☰
                     li
-                        a.navText(href='/index') Login / Sign Up
+                        if(account)
+                            a.navText(href='/logout') Logout #{account}
+                        else
+                            a.navText(href='/register') Register
+                            a.navText(href='/login') Login
         // Primary section of website, wrapped to allow for menu Operation
         section#overallWrap.overallWrap
             // Area for Canvas to be placed
