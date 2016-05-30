@@ -1,0 +1,12 @@
+extends layout
+//  Uses all portions of the comment schema
+block content
+    section.textBox.regText
+        h1=title
+        hr
+        p.commentPost=content
+        small.detailsText
+            b Posted #{dateCreated} by #{author}
+        br
+        br
+        a.pull-right(href='/comments/all') Return to Comments

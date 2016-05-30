@@ -1,0 +1,19 @@
+extends layout
+block content
+    section.textBox.regText
+        div.row
+            div.col-md-12
+                h1 Recent Comments
+                - if(signedIn){
+                    a(href='/comments/write') Write a Comment
+                - }
+                hr
+            div.row
+                for comment in comments
+                    div.col-md-12
+                        h2
+                            a(href='/comments/' + comment.permaLink)=comment.title
+                        p.commentPost=comment.content.substring(0,600) + '...'
+                        small.detailsText
+                            b Posted #{comment.dateCreated} by #{comment.author}
+                        hr
