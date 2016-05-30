@@ -11,10 +11,10 @@ block content
         form(action='/user/login' method='post')
             div.form-group
                 label(for='username') EvilCorp Employee Name
-                input.form-control(type='text', name='username', placeholder='EvilCorp Employee 001', autofocus)
+                input.form-control.userInput(type='text', name='username', placeholder='EvilCorp Employee 001', autofocus)
             div.form-group
                 label(for='password') Password
-                input#password.form-control(type='password', name='password', placeholder='monkey123')
+                input#password.form-control.userInput(type='password', name='password', placeholder='monkey123')
             button.btn.btn-default.btn-lg.btn-block(type='submit') Log In
         br
         | or

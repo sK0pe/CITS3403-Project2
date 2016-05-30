@@ -1,7 +1,7 @@
 .titleText,
 .navText,
 .regText,
-.scoreText,
+.commentPost .scoreText,
 h1,
 a {
   color: #fff;
@@ -14,6 +14,10 @@ a {
 }
 .errorRed {
   color: #f00;
+}
+.detailsText {
+  color: #d6f5f5;
+  size: 80%;
 }
 .navText,
 h1 {
@@ -56,6 +60,13 @@ h2 {
   font-size: 2vh;
   font-weight: 500;
   text-align: left;
+}
+.commentPost {
+  white-space: pre-wrap;
+}
+.userInput {
+  background-color: #3c3c3c;
+  color: #fff;
 }
 li a:hover,
 .textBox a:hover {
@@ -212,7 +223,7 @@ a#menuButton {
 }
 .textBox {
   background-color: rgba(0,0,0,0.7);
-  width: 72vw;
+  width: 80vw;
   padding: 4vh 4vw;
   margin-left: 10vw;
 }

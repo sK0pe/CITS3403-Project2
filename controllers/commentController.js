@@ -4,24 +4,24 @@ var Comment = require('../models/comment');
 //  Most Recent 10 comments
 module.exports.top10 = function(req, res, next){
     Comment.find().sort('-dateCreated').limit(10).exec(function(err, comments){
-        res.render('index', { comments: comments});
+        res.render('commentList', { comments: comments});
     });
 };
 
 //  All comments
 module.exports.all = function(req, res, next){
     Comment.find().sort('-dateCreated').exec(function(err, comments){
-        res.render('index', {comments: comments});
+        res.render('commentList', {comments: comments});
     });
 };
 
 //  Create Comment
 module.exports.createComment = function(req, res, next){
     if(!req.isAuthenticated()){ //  If not signed in send to sign in page
-        return res.redirect('/sign/in');
+        return res.redirect('/users/login');
     }
     //  Else create
-    res.render('create');    
+    res.render('writeComment');
 };
 
 
@@ -38,7 +38,7 @@ function createPermaLink(title) {
 //  Post comment
 module.exports.postComment = function(req, res, next){
     if(!req.isAuthenticated()){ //  auth check
-        return res.redirect('/sign/in');
+        return res.redirect('/users/login');
     }
     
     new Comment({
@@ -50,7 +50,7 @@ module.exports.postComment = function(req, res, next){
         if(err){
             return next(err);
         }
-        else{   // Reroute to comment once posted
+        else{   // Reroute to comment list once posted
             res.redirect('/comments/' + newPost.permaLink);
         }
     });
@@ -59,7 +59,7 @@ module.exports.postComment = function(req, res, next){
 //  Get particular comment
 module.exports.getComment = function(req, res, next){
     Comment.findOne({ permaLink: req.params.permaLink}).exec(
-        function(err, commment){
+        function(err, comment){
             if(err){
                 return next(err);
             }

@@ -47,10 +47,15 @@ html(lang='en')
             li
                 a.navText(href='/design') Design Challenges
             li
-                a.navText(href='/bios') Biographies
+                a.navText(href='/bios') Biography
             li
                 a.navText(href='/references') References
+            - if (signedIn){
             li
-                a.navText(href='/user/login') Login
+                a.navText(href='/user/logout') Log Out
+            - } else {
             li
                 a.navText(href='/user/register') Register
+            li
+                a.navText(href='/user/login') Log In
+            - }
