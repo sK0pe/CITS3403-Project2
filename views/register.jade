@@ -3,13 +3,24 @@
 extends layout
 block content
     section#register.textBox.regText
-        form(action='/register' method='post')
-            h1 Register
-            p Time to climb the corporate ladder using white collar crime!
-                //  name refers to the mongoose user fields
-                br
-                input#username(type='text', name='username', placeholder='Employee Name')
-                br
-                input#password(type='password', name='password', placeholder='Password')
-                br
-                button(type='submit' value='Log in') Register
+        h1 Join Evil Corp
+        p Are you ready to climb the corporate ladder using white collar crime?
+        p If not then you could just play a tetris clone and be recognised for your highs scores.
+        br
+        - if(typeof error != 'undefined'){
+            p
+                span(style='color: red')=error
+        - }
+        form(action='/user/register' method='post')
+            div.form-group
+                label(for='username') Desired EvilCorp Employee Name
+                input.form-control(type='text', name='username', placeholder='Martin Wallström', autofocus)
+            div.form-group
+                label(for='password') Password
+                input#password.form-control(type='password', name='password', placeholder='12345')
+            br
+            button.btn.btn-default.btn-lg.btn-block(type='submit') Register
+            br
+            | or
+            br
+            a(href='user/login') Log In

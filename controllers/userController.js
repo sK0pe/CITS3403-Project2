@@ -62,5 +62,5 @@ module.exports.postLogin = function(req, res, next){
 //  Logout User
 module.exports.getLogout = function(req, res){
     req.logout();
-    res.redirect('/');
+    res.redirect('/background');
 };

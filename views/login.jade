@@ -1,19 +1,24 @@
 extends layout
 block content
     section#login.textBox.regText
-        //h1 Login
-        //p Try and get that promotion by showing off how much cash you've stashed!
-        //br
-        form(role='form', action='/login' method='post')
-            h1 Login
-            p Try and get that promotion by showing off how much cash you've stashed!
-            //  name refers to the user field
-            //label Username:
-            br
-            input#username(type='text' name='username' placeholder='Employee Name' required autofocus)
-            //label Password:
-            br
-            input#password(type='password' name='password' placeholder='Password')
-            br
-            button(type='submit') Log In
+        h1 Login to start Cashing Stash
+        p Try and get that promotion by showing off how much cash you've stashed!
+        br
+        - if (typeof error != 'undefined'){
+            p
+                span(style='color: red')=error
+        - }
+        form(action='/user/login' method='post')
+            div.form-group
+                label(for='username') EvilCorp Employee Name
+                input.form-control(type='text', name='username', placeholder='EvilCorp Employee 001', autofocus)
+            div.form-group
+                label(for='password') Password
+                input#password.form-control(type='password', name='password', placeholder='monkey123')
+            button.btn.btn-default.btn-lg.btn-block(type='submit') Log In
+        br
+        | or
+        br
+        a(href='/user/register') Register
+
 
