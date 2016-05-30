@@ -1,9 +1,6 @@
 //
    Created by Pradyumn on 27/05/2016.
 extends layout
-block errs
-    - each i in messages
-        div.flash= messages[i]
 block content
     section#register.textBox.regText
         form(action='/register' method='post')

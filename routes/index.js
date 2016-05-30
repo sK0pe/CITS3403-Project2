@@ -4,6 +4,7 @@ var indices = require('../controllers/indexController');
 var comments = require('../controllers/commentController');
 
 //  Get Pages / Views
+//router.get('/', comments.top10);
 router.get('/', comments.top10);
 router.get('/background', indices.background);
 router.get('/references', indices.references);

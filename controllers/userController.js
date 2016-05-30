@@ -7,7 +7,7 @@ module.exports.getRegistration = function(req, res, next){
     if(req.isAuthenticated()){  //  Already signed in, reroute
         return res.redirect('/');
     }
-    res.render('register');
+    res.render('register', {title: "Stash EvilCorp's Cash - Registration"});
 };
 
 //  Register User
@@ -33,7 +33,7 @@ module.exports.getLogin = function(req, res, next){
     if(req.isAuthenticated()){  //  If already signed in reroute
         return res.redirect('/');
     }
-    res.render('login');
+    res.render('login', {title : "Stash EvilCorp's Cash - Login"});
 };
 
 //  Login User

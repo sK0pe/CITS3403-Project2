@@ -4,10 +4,9 @@ html(lang='en')
         meta(charset='UTF-8')
         title Stash EvilCorp's Cash - Intro
         link(rel='stylesheet', type='text/css', href='https://fonts.googleapis.com/css?family=Roboto:500,900,700,500italic')
-        link(rel='stylesheet', type='text/css', href='stylesheets/mainStyle.css')
+        link(rel='stylesheet', type='text/css', href='/stylesheets/mainStyle.css')
         script(src='javascripts/mainScript.js')
     body
-        block errs
         header#pageHeader.pageHeader
             #gameTitle
                 a.titleText(href='/game') Fill EvilCorp's Pocket
@@ -36,7 +35,7 @@ html(lang='en')
             li
                 a.navText(href='/game') Play the Game!
             li
-                a.navText(href='/comments/') Comments
+                a.navText(href='/comments/all') Comments
             li
                 a.navText(href='/background') Introduction and Background
             li
@@ -48,6 +47,6 @@ html(lang='en')
             li
                 a.navText(href='/references') References
             li
-                a.navText(href='/login') Login
+                a.navText(href='/user/login') Login
             li
-                a.navText(href='/register') Register
+                a.navText(href='/user/register') Register

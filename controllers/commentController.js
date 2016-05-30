@@ -8,6 +8,13 @@ module.exports.top10 = function(req, res, next){
     });
 };
 
+//  All comments
+module.exports.all = function(req, res, next){
+    Comment.find().sort('-dateCreated').exec(function(err, comments){
+        res.render('index', {comments: comments});
+    });
+};
+
 //  Create Comment
 module.exports.createComment = function(req, res, next){
     if(!req.isAuthenticated()){ //  If not signed in send to sign in page
