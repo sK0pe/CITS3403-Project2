@@ -12,6 +12,9 @@ a {
   font-size: 4vh;
   font-weight: 900;
 }
+.errorRed {
+  color: #f00;
+}
 .navText,
 h1 {
   font-size: 3vh;
@@ -220,6 +223,10 @@ a#menuButton {
 .reflist {
   list-style: none;
   word-wrap: break-word;
+}
+.commentEditor {
+  width: 100%;
+  min-height: 400px;
 }
 .pageFooter {
   min-height: 10vh;

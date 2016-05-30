@@ -6,7 +6,7 @@ block content
         br
         - if (typeof error != 'undefined'){
             p
-                span(style='color: red')=error
+                span.errorRed=error
         - }
         form(action='/user/login' method='post')
             div.form-group
@@ -20,5 +20,3 @@ block content
         | or
         br
         a(href='/user/register') Register
-
-

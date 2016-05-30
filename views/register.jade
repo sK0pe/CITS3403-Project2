@@ -1,5 +1,3 @@
-//
-   Created by Pradyumn on 27/05/2016.
 extends layout
 block content
     section#register.textBox.regText
@@ -9,7 +7,7 @@ block content
         br
         - if(typeof error != 'undefined'){
             p
-                span(style='color: red')=error
+                span.errorRed=error
         - }
         form(action='/user/register' method='post')
             div.form-group

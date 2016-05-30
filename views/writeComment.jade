@@ -1,0 +1,10 @@
+extends layout
+block content
+    h1 Write Comment
+    form(action='/comments/create', method='post', onsubmit='return formContent()')
+        div.form-group
+            label Title
+            input#titie.form-control(type='text', placeholder='Title Comment', name='title', autofocus)
+        div.form-group
+            label Post
+            textarea#editor.commentEditor(name='content', wrap='soft', spellcheck='true').form-control
