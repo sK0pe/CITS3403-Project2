@@ -5,7 +5,7 @@ var comments = require('../controllers/commentController');
 
 //  Get Pages / Views
 //router.get('/', comments.top10);
-router.get('/', comments.top10);
+router.get('/', indices.background);
 router.get('/background', indices.background);
 router.get('/references', indices.references);
 router.get('/rules', indices.rules);
