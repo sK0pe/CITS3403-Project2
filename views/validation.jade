@@ -1,4 +1,26 @@
 extends layout
 block content
     section#validation.textBox.regText
-        h1 Tests Validation and Results
+        h1 Tests, Validation and Results
+        hr
+        p
+            | Unfortunately I could not implement a Mocha, Chai or custom testing environment.  I did not expect the
+            | implementation the server to be quite as challenging or time consuming as it was.
+        p
+            | Testing was primarily performed by manually testing functions and inspecting the MongoDB through a mongo
+            | shell. This approach was particularly arduous.  In addition it was not clear whether I was successful with
+            | my RESTful API till I installed Postman and started monitoring Get and Post messages in concert with
+            | console logging.
+        p
+            | I also made use of my peers in other units to test the website UI, UX, design, aesthetic and
+            | functionality. This type of testing was particularly interesting as I haven't really programmed anything
+            | with such an important GUI (other than some basic games in Python and Android applications, most other
+            | programs are command line applications).
+        p
+            | Primarily complaints were fielded from the initial loading of the web page as it has a high resolution
+            | background. While it was sufficient to reduce the quality for a 1920 x 1080 screen, any higher end phone,
+            | tablet, laptop or high resolution monitor (2k - 4k) made the background look like rubbish. On an ADSL1
+            | Internet connection the website still takes only a few seconds to load.
+        p
+            | The other major complaint was the mobile design, it did not seem to adjust to screen size well in the
+            | first part of the assignment and I ran short of time to fix some of the CSS deficiencies.

@@ -2,6 +2,9 @@
 window.onload = function(){
     /*Toggle Menu if click button*/
     document.getElementById("menuButton").onclick = function (){
+        if(typeof tetris !== 'undefined'){
+            tetris.externalPause();
+        }
         toggleMenu();
     };
     /*Toggle menu if click mask*/

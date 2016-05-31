@@ -1,4 +1,6 @@
-(function(){    // Make a private space
+//  Load game
+
+var tetris = function(){    // Make a private space
 
     /*--------------------------------------------------Constants*/
     var keyArray = {ESC: 27, SPACE: 32, W: 87, S: 83, A: 65, D: 68, ENTER: 13},
@@ -20,6 +22,7 @@
         currBlock,      // current block
         nextBlock,      // next block
         score,          // current score
+        finalScore,     // final score of the game
         tetris,         // if last clear was a tetris (4 blocks)
         paused;         // Boolean indicating pause state
 
@@ -99,6 +102,8 @@
     // Begin game
     function startPlaying(){
         document.getElementById("startBanner").style.visibility = "hidden";
+        document.getElementById("pushScore").style.visibility = 'hidden';
+        document.getElementById("gameOver").value = 0;
         reset();
         playing = true;
         paused = false;
@@ -107,7 +112,8 @@
     //  End game
     function endGame(){
         document.getElementById("startBanner").style.visibility ="visible";
-        setScore(0);
+        document.getElementById("pushScore").style.visibility = 'visible';
+        setFinalScore();
         playing = false;
     }
 
@@ -129,6 +135,11 @@
     function setScore(s){
         score = score + s || 0;
         redrawScore();
+    }
+
+    //  Set final score, at end of game to be exported out of function
+    function setFinalScore(){
+        document.getElementById("gameOver").value = score;
     }
 
     //  Get a block with null / false if it doesn't exist
@@ -516,5 +527,15 @@
     /*-------------------------------------------------------------Run Game*/
     runGame();
 
-})();
-             
+    //  Return functionality outside of tetris
+    return{
+        externalPause:function(){
+            if(!paused){
+                setPauseState();
+            }
+        },
+        gameOver:function(){
+            return 10;
+        }
+    }
+}();

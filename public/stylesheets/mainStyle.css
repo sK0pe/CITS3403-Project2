@@ -15,8 +15,8 @@ a {
 .errorRed {
   color: #f00;
 }
-.detailsText {
-  color: #d6f5f5;
+small.detailsText {
+  color: #f7208b;
   size: 80%;
 }
 .navText,
@@ -72,6 +72,9 @@ li a:hover,
 .textBox a:hover {
   color: #0ff;
   background-color: rgba(0,0,0,0.4);
+}
+.table-hovering tr:hover {
+  background-color: #3c3c3c;
 }
 .pageHeader,
 .pageFooter,
@@ -199,6 +202,9 @@ a#menuButton {
   margin-left: 9vw;
   background-color: rgba(0,0,0,0.7);
   display: block;
+}
+.hiddenElement {
+  visibility: hidden;
 }
 .sidebar {
   width: 20vw;

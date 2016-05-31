@@ -2,3 +2,85 @@ extends layout
 block content
     section#design.textBox.regText
         h1 Architecture, Design and Challenges
+        h2 Architecture
+        hr
+        p
+            | The architecture used for this particular website was primarily based on the recommendations outlined in
+            | the project specification.  The server platform is based upon Node.JS which enables multiple
+            | packages to be used, enabling functionality and increased efficiency.
+        p
+            | The Express framework is pulled in through Node to enable integration of all components. Express
+            | acts as the framework for the website in concert with Node when it comes to the server back end.
+        p
+            | The front end was predominantly based on Jade templates, primarily due to the ease of use, integration of
+            | scripts minor native programming functions such as loops and if / else statements.
+        p
+            | The Stylus template package was used for ease of use to write custom CSS3 stylesheets.
+        p
+            | The database used was MongoDB.  While not as strict and easily interacted with through the Mongoose
+            | package, it can be limiting when compared to Postgres and MySQL.
+        p
+            | A Model, View Controller system was used to produce a logical flow for the components to work through.
+        h2 Design
+        hr
+        p
+            | The website design attempts to emulate some of the more commonly seen website patterns on the Internet
+            | while not being a cookie cutter template.
+        p
+            | The aim was to design the entire site to be as adaptive to screen changes as possible and touch friendly
+            | however due to the front end part of the project restricting the use of external CSS libraries and the
+            | lack of Angular, the task became futile.
+        p
+            | The aim was for a consistent feel throughout the website and an inversion of colours when compared to most
+            | websites (which can be hard to read with bright backgrounds and dark text).
+        p
+            | By restricting myself to a base Jade layout and a single high resolution image for my background and
+            | manipulating the opacity of elements (and some reactive elements) I wanted to display a minimalism which
+            | was not boring.
+        p
+            | Google's Roboto font was used for fonts and elements of Bootstrap were added for some pages but heavily
+            | modified so as not to disrupt the original design of the site.
+        p
+            | A robust local authentication protocol has been used with the Node Passport package, which includes
+            | password hashing and salting so the server has no access to the plain text.
+        p
+            | Unfortunately no multi-player component could be programmed in time for the deadline as the entire MEAN
+            | stack has a very steep learning curve.
+        p
+            | In lieu of the multiplayer component, a comment / article system was also included for the website, which
+            | allows for long form posts which can be browsed by title and the first sentence or two. Each post also has
+            | persistence with a human readable permanent link that is base don the tile of the post.
+        h2 Challenges
+        hr
+        p
+            | I personally found this to be a very challenging project. While writing the game was moderately difficult
+            | as learning JavaScript from scratch and having a well designed website was very rewarding and forced me to
+            | think and test UI and UX separately.
+        p
+            | Writing the server side back end was punishing. While HTML5 has an
+            | excellent repository of information through W3Schools and JavaScript has a moderately helpful set of
+            | resources, the MEAN stack has no good central repository of information. For every 100 tutorials and blog
+            | posts on the subject there are an equally different ways of implementing the server primarily as everyone
+            | wants to use a different set of Node packages, external CSS, javascript, JQuery, database and server side.
+            | Virtually everyone seems to have a different folder structure setup as there is no offical best practice
+            | and the varied nature of the framework components allows any structure.
+        p
+            | I was completely stumped when I needed to transfer data from the client to the server in a way that did
+            | not use forms. It was clear that the controllers in the MVC structure expected a particular form of JSON
+            | file but I could not work out what the header should include and documentation was rather confusing.
+            | I ended up doing a very odd hack which involves DOM manipulation and forces the user to manually send
+            | their score to the server by pressing a form button rather than it being automated (which was what I was
+            | trying to implement).
+        p
+            | I did not enjoy using JavaScript as a primary language for something as important as the server, the
+            | entire structure seems like a hack to get around having to learn a first class programming language.
+        p
+            | I was initially excited to be working in a group for this project, emulating a webdev team and using a
+            | version control system properly.  However my team mate struggled with communication and all the concepts
+            | of the website back end.  I ultimately did all of the research and project my self.  I think there would
+            | would have been less of a struggle with one or two people.  However by doing all parts of the project I
+            | feel as if I understand the concepts the server far better than I would have.
+        p
+            | Due to time constraints and a lack of knowledge, I was not able to implement a Mocha / Chai validation for
+            | the website. The lack of testing made it slightly more difficult to write and consumed more time than
+            | required.

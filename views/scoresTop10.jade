@@ -1,0 +1,17 @@
+extends layout
+block content
+    section.textBox.regText
+        a.pull-right(href='/scoreboard/all') All Scores
+        h1 Scoreboard Top 10 Scores
+        table.table.table-hovering
+            tr
+                th Number
+                th Player
+                th Points
+                th Date
+            each score, i in scores
+                tr
+                    td #{i+1}
+                    td #{score.player}
+                    td #{score.score}
+                    td #{moment(score.dateCreated).format("YYYY-MM-DD HH:mm")}

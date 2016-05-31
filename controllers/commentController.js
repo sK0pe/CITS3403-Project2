@@ -1,17 +1,18 @@
 var express = require('express');
+var moment = require('moment');
 var Comment = require('../models/comment');
 
 //  Most Recent 10 comments
 module.exports.top10 = function(req, res, next){
     Comment.find().sort('-dateCreated').limit(10).exec(function(err, comments){
-        res.render('commentList', { comments: comments});
+        res.render('commentsTop10', { 'comments': comments, moment: moment});
     });
 };
 
 //  All comments
 module.exports.all = function(req, res, next){
     Comment.find().sort('-dateCreated').exec(function(err, comments){
-        res.render('commentList', {comments: comments});
+        res.render('commentsAll', {'comments': comments, moment: moment});
     });
 };
 

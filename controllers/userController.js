@@ -54,7 +54,7 @@ module.exports.postLogin = function(req, res, next){
                 return next(err);
             }
             //  Successful login
-            return res.redirect('/');
+            return res.redirect('/game');
         });
     })(req, res, next);
 };

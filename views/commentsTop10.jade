@@ -1,6 +1,7 @@
 extends layout
 block content
     section.textBox.regText
+        a.pull-right(href='/comments/all') All Comments
         div.row
             div.col-md-12
                 h1 Recent Comments
@@ -14,6 +15,5 @@ block content
                         h2
                             a(href='/comments/' + comment.permaLink)=comment.title
                         p.commentPost=comment.content.substring(0,600) + '...'
-                        small.detailsText
-                            b Posted #{comment.dateCreated} by #{comment.author}
+                        small.detailsText Posted #{moment(comment.dateCreated).format("YYYY-MM-DD HH:mm")} by #{comment.author}
                         hr
