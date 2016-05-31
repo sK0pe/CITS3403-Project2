@@ -2,6 +2,7 @@ extends layout
 block content
     section.textBox.regText
         h1 Write Comment
+        hr
         form(action='/comments/write', method='post', onsubmit='return formContent()')
             div.form-group
                 label
