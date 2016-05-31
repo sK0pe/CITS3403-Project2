@@ -1,4 +1,5 @@
 //  Load game
+
 var tetris = function(){    // Make a private space
 
     /*--------------------------------------------------Constants*/
@@ -101,6 +102,8 @@ var tetris = function(){    // Make a private space
     // Begin game
     function startPlaying(){
         document.getElementById("startBanner").style.visibility = "hidden";
+        document.getElementById("pushScore").style.visibility = 'hidden';
+        document.getElementById("gameOver").value = 0;
         reset();
         playing = true;
         paused = false;
@@ -109,9 +112,8 @@ var tetris = function(){    // Make a private space
     //  End game
     function endGame(){
         document.getElementById("startBanner").style.visibility ="visible";
-        setScore(0);
+        document.getElementById("pushScore").style.visibility = 'visible';
         setFinalScore();
-        postScore();
         playing = false;
     }
 
@@ -137,7 +139,7 @@ var tetris = function(){    // Make a private space
 
     //  Set final score, at end of game to be exported out of function
     function setFinalScore(){
-        finalScore = score;
+        document.getElementById("gameOver").value = score;
     }
 
     //  Get a block with null / false if it doesn't exist
@@ -531,9 +533,9 @@ var tetris = function(){    // Make a private space
             if(!paused){
                 setPauseState();
             }
-        }/*,
-        finalScore:function(){
-            return finalScore;
-        }*/
+        },
+        gameOver:function(){
+            return 10;
+        }
     }
 }();

@@ -15,6 +15,7 @@ var User = require('./models/user');
 var users = require('./routes/users');
 var routes = require('./routes/index');
 var comments = require('./routes/comments');
+var scores = require('./routes/scores')
 //  Express
 var app = express();
 
@@ -48,6 +49,7 @@ app.get('*', function(req, res, next){
 app.use('/', routes);
 app.use('/user', users);
 app.use('/comments', comments);
+app.use('/scoreboard', scores);
 
 //  Passport configuration (default)
 passport.use(User.createStrategy());

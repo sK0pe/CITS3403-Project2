@@ -5,11 +5,11 @@ block content
             canvas#previewCanvas.previewCanvas Your browser doesn't support canvas!
             p.scoreText Millions of Dollars Hidden:
             p#score.navText 0
-            p#startBanner.regText  Press ENTER to begin.
-
+            p#startBanner.regText.text-center  Press ENTER to begin.
+            form(action='/scoreboard/postScore', method='post', onsubmit='return formContent()')
+                input#gameOver.hiddenElement(type='number', name='score')
+                button#pushScore.btn.btn-default.btn-lg(type='submit') Record Score
         canvas#canvas.gameCanvas Your browser doesn't support canvas!
-        form(action='/scores/postScore', method='post', enctype='text/plain' onsubmit='return tetris.finalScore()')
-            button.btn.btn-default.btn-lg(type='submit') Record Score
 
 block script
     script(src='javascripts/tetris.js')

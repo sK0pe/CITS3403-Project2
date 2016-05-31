@@ -19,6 +19,7 @@ module.exports.all = function(req, res, next){
 
 //  Post Score
 module.exports.postScore = function(req, res, next){
+    console.log('with body.score ' + req.body.score);
     if(!req.isAuthenticated()){ //  auth check
         //  not logged in, can't record score
         res.redirect('/users/login');
