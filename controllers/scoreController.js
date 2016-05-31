@@ -1,10 +1,12 @@
 var express = require('express');
+var moment = require('moment');
 var Score = require('../models/score');
+
 
 //  10 highest scores
 module.exports.top10 = function(req, res, next){
     Score.find().sort('-score').limit(10).exec(function(err, scores){
-        res.render('scoreBoard', { scores: scores});
+        res.render('scoresTop10', {'scores': scores, moment: moment});
     });
 };
 
@@ -12,7 +14,7 @@ module.exports.top10 = function(req, res, next){
 //  All Scores in descending list
 module.exports.all = function(req, res, next){
     Score.find().sort('-score').exec(function(err, scores){
-        res.render('scoreBoard', {scores: scores});
+        res.render('scoresAll', {'scores': scores, moment: moment});
     });
 };
 
@@ -32,7 +34,7 @@ module.exports.postScore = function(req, res, next){
             return next(err);
         }
         else{   // Reroute to comment list once posted
-            res.redirect('/scoreboard/');
+            res.redirect('/scoreboard');
         }
     });
 };
