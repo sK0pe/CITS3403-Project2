@@ -19,7 +19,7 @@ module.exports.all = function(req, res, next){
 //  Create Comment
 module.exports.createComment = function(req, res, next){
     if(!req.isAuthenticated()){ //  If not signed in send to sign in page
-        return res.redirect('/users/login');
+        return res.redirect('/user/login');
     }
     //  Else create
     res.render('writeComment');
@@ -39,7 +39,7 @@ function createPermaLink(title) {
 //  Post comment
 module.exports.postComment = function(req, res, next){
     if(!req.isAuthenticated()){ //  auth check
-        return res.redirect('/users/login');
+        return res.redirect('/user/login');
     }
     
     new Comment({
