@@ -1,7 +1,9 @@
 .titleText,
 .navText,
 .regText,
-.commentPost .scoreText,
+.commentPost,
+.regTextCenter,
+.scoreText,
 h1,
 a {
   color: #fff;
