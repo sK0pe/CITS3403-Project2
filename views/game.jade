@@ -5,7 +5,7 @@ block content
             canvas#previewCanvas.previewCanvas Your browser doesn't support canvas!
             p.scoreText Millions of Dollars Hidden:
             p#score.navText 0
-            p#startBanner.regText.text-center  Press ENTER to begin.
+            p#startBanner.regTextCenter  Press ENTER to begin.
             form(action='/scoreboard/postScore', method='post', onsubmit='return formContent()')
                 input#gameOver.hiddenElement(type='number', name='score')
                 button#pushScore.btn.btn-default.btn-lg(type='submit') Record Score
