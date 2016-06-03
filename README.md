@@ -10,3 +10,7 @@ At a command line or from an IDE type, type NPM install, to download dependencie
 Make sure an instance of MongoDB is running in the background with an open default port.
 
 Run with "NPM start" at commandline.
+
+<a href="http://13.73.119.176:3000/">See a live working version of this site.</a>
+
+Feel free to fix my mongo, I've only skimmed it.
